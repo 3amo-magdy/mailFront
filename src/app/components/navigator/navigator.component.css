@@ -1,0 +1,12 @@
+main h1 ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+}
+main h1 ul li:nth-child(2) {
+    margin-left: auto;
+}
+main h1 ul li:last-child {
+    margin-right: 2rem;
+    color: var(--text-special);
+}

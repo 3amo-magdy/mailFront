@@ -1,0 +1,152 @@
+.composer {
+    font-family: 'Open Sans';
+    margin: 2.5rem;
+    margin-left: 6rem;
+    margin-bottom: auto;
+    color: var(--text-secondary);
+    border-radius: 1rem;
+    align-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.mainfield {
+    width: 80%;
+    position: relative;
+    border-bottom: 1px dashed var(--text-secondary);
+    margin: auto;
+    margin-top: 2rem;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.mainfield::after {
+    content: "";
+    position: relative;
+    display: block;
+    height: 4px;
+    width: 100%;
+    background: #ff7eee;
+    transform: scaleX(0);
+    transform-origin: 0%;
+    transition: transform 500ms ease;
+    top: 4px;
+}
+
+.mainfield:focus-within {
+    border-color: transparent;
+}
+.mainfield:focus-within::after {
+    transform: scaleX(1);
+}
+.mainfield:hover::after {
+    transform: scaleX(1);
+}
+
+.input {
+    outline: none;
+    border: none;
+    overflow: auto;
+    margin: 0;
+    width: 100%;
+    padding: 0.25rem 0;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.input:invalid {
+    color: orangered;
+}
+
+.label {
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    position: absolute;
+    transform: translateY(0rem);
+    transform-origin: 0%;
+    transition: transform 400ms ease;
+}
+
+.mainfield:focus-within .label,
+.input:not(:placeholder-shown) + .label {
+    transform: scale(0.8) translateY(-2rem);
+    transition: transform 400ms ease;
+}
+
+textarea {
+    resize: none;
+}
+
+textarea::-webkit-scrollbar {
+    width: 0.25rem;
+    height: 0.25rem;
+}
+
+textarea::-webkit-scrollbar-button {
+    background: #1e1e24;
+}
+
+textarea::-webkit-scrollbar-thumb {
+    background: #6649b8;
+}
+
+.body {
+    outline: none;
+    border: none;
+    overflow: hidden;
+    margin: 0;
+    width: 100%;
+    padding: 0.25rem 0;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.button {
+    background: linear-gradient(to right, #ff7eee, #ffcbf8);
+    border: 2px solid var(--bg-secondary);
+    height: 7%;
+    width: 10%;
+    border-radius: 1rem;
+    cursor: pointer;
+    font-size: large;
+    transition: transform 500ms ease;
+    position: absolute;
+    bottom: 10%;
+    left: 45%;
+}
+.button:hover {
+    transform: scale(1.2)
+}
+
+.attachButton {
+    position: absolute;
+    font-size: medium;
+    margin-left: 1rem;
+    top: -1.3rem;
+    cursor: pointer;
+}
+
+.attachButton::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.attachButton + .label {
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: x-large;
+    margin-bottom: 1rem;
+}
+
+.attachButton:focus + .label,
+.attachButton + .label:hover {
+    color: var(--text-special);
+}
+
+.attachment {
+    cursor: pointer;
+}

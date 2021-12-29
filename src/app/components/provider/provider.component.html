@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="container" *ngFor = "let mail of mails">
+        <div class="field">
+            <input type="checkbox" class="checkbox" (click)="mail.select()">
+            <button class="link" (click)='navigate(mail.id)'>
+                <ul class="row">
+                    <!-- kill ngif -->
+                    <li>{{mail.name}}</li>
+                    <li>{{mail.subSubject}}</li>
+                    <li>{{mail.date}}</li>
+                </ul>
+            </button>
+        </div>
+    </div>
+</div>

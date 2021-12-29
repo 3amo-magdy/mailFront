@@ -1,0 +1,57 @@
+.mail {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    transition: 300ms ease;
+    border-radius: 1rem;
+}
+
+.mail:hover {
+    background: #23232e;
+    transition: 300ms ease;
+}
+
+ul.mail li:last-child {
+    font-size: smaller;
+    font-weight: bolder;
+    color: var(--text-secondary);
+    margin-top: auto;
+}
+
+.from {
+    text-decoration: none;
+    color: var(--text-primary);
+    font-size: larger;
+    font-weight: bold;
+}
+
+.from:hover {
+    color: var(--text-secondary)
+}
+
+.subject {
+    text-decoration: none;
+    color: var(--text-primary);
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+.subject:hover {
+    color: var(--text-secondary);
+}
+
+.break-line {
+    width: 90%;
+    color: var(--text-secondary)
+}
+
+.mail-attachments {
+    margin-top: auto;
+    width: 100%;
+    display: inline-block;
+    max-width: 50rem;
+}

@@ -1,0 +1,30 @@
+<div class="mail" *ngIf="notEmpty()">
+    <ul class="mail">
+        <li>
+            <p class="from"> From: {{from}} </p>
+        </li>
+        <li>
+            <p class="subject"> Subject: {{subject}}</p>
+        </li>
+        <hr class="break-line">
+        <li>
+            <p> {{body}} </p>
+        </li>
+        <li>
+            <!-- decomposer -->
+            <div *ngIf="filenames.length > 0" class="js-upload-finished">
+            <h3> Attachments </h3>
+                <div *ngFor="let filename of filenames" class="list-group">
+                    <a (click)="onDownloadFile(filename)" class="list-group-item list-group-item-success" style="cursor: pointer;">
+                        {{ filename }}            
+                        <a class="alert-success float-right"> Download </a>
+                    </a><br>
+                </div>
+            </div>
+            <!--  -->
+        </li>
+        <li>
+            <p> Date: {{date}} </p>
+        </li>
+    </ul>
+</div>

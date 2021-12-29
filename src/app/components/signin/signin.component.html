@@ -1,0 +1,29 @@
+<form>
+    <!-- <div class="field">
+        <input type="text" name="username" class="input" placeholder="">
+        <label for="text" class="label">Username</label>
+    </div> -->
+    <div class="field">
+        <input id="emailInput" type="email" name="email" class="input" >
+        <label for="email" class="label">Email</label>
+    </div>
+    <div class="field">
+        <input id="passwordInput" [type]="passwordType" name="password" class="input" placeholder="">
+        <label for="password" class="label">Password</label>
+        <span
+            class="toggle-password"
+            (mouseenter)="toggle()"
+            (mouseleave)="toggle()"
+            >
+            {{showPassword? '🙈': '👀'}}
+        </span>
+    </div>
+
+    <ul>
+        <li> <button class="button" (click)="validate()">Sign In</button> </li>
+        <li><a href="/retrievepassword" class="buttonlink">Forgot Password?</a></li>
+        <li><a href="/register" class="buttonlink">New here? Register a new user.</a></li>
+    </ul>
+
+    
+</form>

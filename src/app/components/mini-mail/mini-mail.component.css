@@ -1,0 +1,90 @@
+.container {
+    font-family: 'Open Sans';
+    /* max-width: 100%; */
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    position: relative;
+}
+
+.field {
+    width: 80%;
+    position: relative;
+    margin: auto;
+    list-style: none;
+}
+
+.field::after {
+    content: "";
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    height: 2px;
+    width: 100%;
+    background: #ff7eee;
+    transform: scaleY(0);
+    transform-origin: 0%;
+    transition: transform 200ms ease;
+}
+
+.field:hover::after {
+    transform: scaleY(1);
+}
+
+.link {
+    background: transparent;
+    color: var(--text-primary);
+    height: auto;
+    transition: color 200ms ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.link:hover {
+    color: var(--text-special);
+    transition: color 200ms ease;
+}
+
+.row {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+}
+
+.row li {
+    position: absolute;
+    top: 0.5rem;
+}
+
+.row li:nth-child(1) {
+    margin-right: 15rem;
+}
+
+.row li:last-child {
+    position: absolute;
+    top: 0.5rem;
+    right: 0;    
+}
+
+.checkbox {
+    background: transparent;
+    color: var(--text-primary);
+    height: auto;
+    transition: color 200ms ease;
+    height: 1rem;
+    width: 1rem;
+    position: absolute;
+    top: 0.5rem;
+    left: 0;
+}
+
+.checkbox:hover {
+    background-color: #ff7eee;
+    transform: scale(1.3);
+}
+
+input:checked .checkbox {
+    background-color: #ff7eee;
+}

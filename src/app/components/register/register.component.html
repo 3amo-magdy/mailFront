@@ -1,0 +1,48 @@
+<form>
+    <div class="field">
+        <input type="text" id="firstname" class="input" placeholder="">
+        <label for="text" class="label"> First Name </label>
+    </div>
+    <div class="field">
+        <input type="text" id="lastname" class="input" placeholder="">
+        <label for="text" class="label"> Last Name </label>
+    </div>
+    <div class="field">
+        <select class="input select" id="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Rather not say">Rather not say</option>
+        </select>
+        <label for="text" class="label"> Gender </label>
+    </div>
+    <div class="field">
+        <input type="email" id="email" class="input" >
+        <label for="email" class="label"> Email </label>
+    </div>
+    <div class="field">
+        <input id="passwordInput" [type]="passwordType" id="password" class="input" placeholder="" (keyup)="validate($event)">
+        <label for="password" class="label"> Password </label>
+        <span
+            class="toggle-password"
+            (mouseenter)="toggle()"
+            (mouseleave)="toggle()"
+            >
+            {{showPassword? '🙈': '👀'}}
+        </span>
+    </div>
+    <div class="strength">
+        <span class="bar bar-1" [ngClass]="{'bar-show' : strength > 0}"></span>
+        <span class="bar bar-2" [ngClass]="{'bar-show' : strength > 1}"></span>
+        <span class="bar bar-3" [ngClass]="{'bar-show' : strength > 2}"></span>
+        <span class="bar bar-4" [ngClass]="{'bar-show' : strength > 3}"></span>
+    </div>
+
+    <ul>
+        <li> {{validations[0] ? '✔' : '❌'}} Must be at least 8 characters </li>
+        <li> {{validations[1] ? '✔' : '❌'}} Must contain a capital letter </li>
+        <li> {{validations[2] ? '✔' : '❌'}} Must contain a number </li>
+        <li> {{validations[3] ? '✔' : '❌'}} Must contain a symbol </li>
+        <li> <button class="button" (click)="register()">Register</button> </li>
+        <li> <button class="buttonlink" (click)="signIn()">Already have an account? Sign in.</button> </li>
+    </ul>
+</form>

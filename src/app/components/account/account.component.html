@@ -1,0 +1,23 @@
+<form *ngIf='logged()'>
+    <div class="field">
+        <p type="text" id="firstname" class="input">{{firstName}}</p>
+        <label for="text" class="label"> First Name </label>
+    </div>
+    <div class="field">
+        <p type="text" id="lastname" class="input">{{lastName}}</p>
+        <label for="text" class="label"> Last Name </label>
+    </div>
+    <div class="field">
+        <p type="text" id="gender" class="input">{{gender}}</p>
+        <label for="text" class="label"> Gender </label>
+    </div>
+    <div class="field">
+        <p type="email" id="email" class="input"> {{emailAddress}} </p>
+        <label for="email" class="label"> Email </label>
+    </div>
+    <div>
+        <button class="button" (click)="edit()">
+            Edit Account Details
+        </button>
+    </div>
+</form>
