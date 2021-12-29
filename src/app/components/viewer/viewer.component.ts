@@ -17,10 +17,7 @@ export class ViewerComponent implements OnInit {
   to!: String
   subject!: String
   body!: String
-  filenames: string[] = ["CSE214-2021-Lecture-1.pdf",
-    "CSE214-2021-Lecture-2.pdf",
-    "CSE214-2021-Lecture-3.pdf",
-    "CSE214-2021-Lecture-4.pdf"]
+  filenames: string[] = []
   attachmentsID?: String[]
   importance?: String
   // Attributes to be generated either from the Backend
@@ -53,7 +50,6 @@ export class ViewerComponent implements OnInit {
       if(priority){
         this.importance = priority
       }
-      filenames=[];
       if(filenames){
         for(let i=0; i<filenames.length; i++){
           this.filenames.push(filenames[i]);

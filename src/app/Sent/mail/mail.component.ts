@@ -47,6 +47,8 @@ export class MailComponent implements OnInit {
       event => {
         console.log(event);
         this.resportProgress(event);
+
+
       },
       (error: HttpErrorResponse) => {
         console.log(error);

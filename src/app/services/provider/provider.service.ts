@@ -34,8 +34,8 @@ export class ProviderService {
     let date: String
     let id: String
     let priority: String
-    let attachments = new Array
-
+    let attachments = [];
+    console.log(data)
     for(let i = 0; i < data.length; i++) {
       from = data[i].from
       to = data[i].to
@@ -44,8 +44,15 @@ export class ProviderService {
       date = data[i].dateTime
       id = data[i].id
       priority = data[i].importance
-      attachments = data[i].attach  
+  
+      // attachments = data[i].attach  
+      console.log(data[i].attach.type)
+      for(let j=0;j<data[i].attach.length;j++) {
+        attachments.push(data[i].attach[j])
+        console.log("attachments")
+      }      console.log(attachments)
       let mail = new MailComponent(this.fileService, to, subject, body, id, from, priority, date, attachments)
+      console.log(mail)
       mailsArray.push(mail)
     }
     return mailsArray

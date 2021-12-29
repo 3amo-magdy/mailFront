@@ -12,8 +12,7 @@ import { UploadService } from 'src/app/services/upload/upload.service';
 export class ComposerComponent implements OnInit {
   mail = new MailComponent(this.fileService) /////////////////////////////////
   compose() {
-    // 
-    this.mail.from = (<HTMLInputElement>document.getElementById("from")).value
+    
     this.mail.to = (<HTMLInputElement>document.getElementById("to")).value
     this.mail.subject = (<HTMLInputElement>document.getElementById("subject")).value
     this.mail.body = (<HTMLInputElement>document.getElementById("body")).value
@@ -28,7 +27,7 @@ export class ComposerComponent implements OnInit {
   filenames: string[] = [];
   fileStatus = { status: '', requestType: '', percent: 0 };
 
-  constructor(private fileService: UploadService) { }
+  constructor(private fileService: UploadService) { this.filenames=[]}
 
   // Use it when send the message
   onUploadFiles(e: Event): void {
@@ -52,7 +51,8 @@ export class ComposerComponent implements OnInit {
       );
       console.log("Success")
     }
-    else { console.log("Error! Select File") }    
+    else { console.log("Error! Select File") }   
+     
   }
 
   private resportProgress(httpEvent: HttpEvent<string[] | Blob>): void {

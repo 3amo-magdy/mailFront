@@ -1,9 +1,9 @@
 import { NavigatorComponent } from './../navigator/navigator.component';
-import { MailComponent } from './../mail/mail.component';
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse, HttpEvent, HttpEventType } from '@angular/common/http';
 import { saveAs } from 'file-saver';
 import { UploadService } from 'src/app/services/upload/upload.service';
+import { MailComponent } from './../../Sent/Sent/mail/mail.component';
 
 @Component({
   selector: 'app-composer',
@@ -13,13 +13,15 @@ import { UploadService } from 'src/app/services/upload/upload.service';
 export class ComposerComponent implements OnInit {
 
   compose() {
-    let from = (<HTMLInputElement> document.getElementById("from")).value
-    let to = (<HTMLInputElement> document.getElementById("to")).value
-    let subject = (<HTMLInputElement> document.getElementById("subject")).value
-    let body = (<HTMLInputElement> document.getElementById("body")).value
-    let attachment = document.getElementsByName("attachments")[0]
-    let mail = new MailComponent(this.fileService, to, subject, body, "");
-    console.log(attachment)
+    // let from = (<HTMLInputElement> document.getElementById("from")).value
+    this.mail.to = (<HTMLInputElement> document.getElementById("to")).value
+    this.mail.subject = (<HTMLInputElement> document.getElementById("subject")).value
+    this.mail.body = (<HTMLInputElement> document.getElementById("body")).value
+    console.log(this.mail)
+    this.fileService.sendMessage(this.mail).subscribe(x=>(
+      console.log(x)
+      
+    ))
   }
 
   logged() {
@@ -31,7 +33,7 @@ export class ComposerComponent implements OnInit {
   fileStatus = { status: '', requestType: '', percent: 0 };
 
   constructor(private fileService: UploadService) {
-    this.mail = new MailComponent(this.fileService, "", "", "", "")
+    this.mail = new MailComponent(this.fileService)
   }
 
   mail: MailComponent
@@ -59,6 +61,7 @@ export class ComposerComponent implements OnInit {
       console.log("Success")
     }
     else { console.log("Error! Select File") }
+    console.log("hi")
   }
 
   private resportProgress(httpEvent: HttpEvent<string[] | Blob>): void {
