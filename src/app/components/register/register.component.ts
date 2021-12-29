@@ -27,6 +27,9 @@ export class RegisterComponent implements OnInit {
     account.emailAddress = (<HTMLInputElement>document.getElementById("email")).value
     account.gender = (<HTMLInputElement>document.getElementById("gender")).value
     account.password = (<HTMLInputElement>document.getElementById("password")).value
+    console.log(account.gender);
+    console.log(account);
+
     this.AccountService.addAccount(account).subscribe(data => {
       console.log("data received from back :\n" + data);
       if ((<String>data).includes("missing")) {

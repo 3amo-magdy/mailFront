@@ -43,6 +43,7 @@ export class AccountService {
       "lastName": account.lastName,
       "email": account.emailAddress,
       "password": account.password,
+      "gender":account.gender
     }, httpOptions);
   }
   editAccount(account: AccountComponent): Observable<Object> {
