@@ -1,15 +1,43 @@
 <div class="container">
-    <div class="container" *ngFor = "let mail of mails">
-        <div class="field">
-            <input type="checkbox" class="checkbox" (click)="mail.select()">
-            <button class="link" (click)='navigate(mail.id)'>
-                <ul class="row">
-                    <!-- kill ngif -->
-                    <li>{{mail.name}}</li>
-                    <li>{{mail.subSubject}}</li>
-                    <li>{{mail.date}}</li>
-                </ul>
-            </button>
+    <button class="row" (click)="onFilter()">filter</button>
+    <select class="input select" id="filter">
+        <option value="to">to</option>
+        <option value="from">from</option>
+        <option value="subject">subject</option>
+        <option value="body">body</option>
+        <option value="date">date</option>
+        <option value="importance">importance</option>
+    </select>
+    <input type="text" placeholder="Criteria" id="criteria">
+    <button class="row" (click)="onSort()"> Sort </button>
+    <div *ngIf='!filter'>
+        <div class="container" *ngFor = "let mail of mails">
+            <div class="field">
+                <input type="checkbox" class="checkbox" (click)="mail.select()">
+                <button class="link" (click)='navigate(mail.id)'>
+                    <ul class="row">
+                        <!-- kill ngif -->
+                        <li>{{mail.name}}</li>
+                        <li>{{mail.subSubject}}</li>
+                        <li>{{mail.date}}</li>
+                    </ul>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf='filter'>
+        <div class="container" *ngFor = "let mail of filteredMails">
+            <div class="field">
+                <input type="checkbox" class="checkbox" (click)="mail.select()">
+                <button class="link" (click)='navigate(mail.id)'>
+                    <ul class="row">
+                        <!-- kill ngif -->
+                        <li>{{mail.name}}</li>
+                        <li>{{mail.subSubject}}</li>
+                        <li>{{mail.date}}</li>
+                    </ul>
+                </button>
+            </div>
         </div>
     </div>
 </div>

@@ -15,10 +15,12 @@ import { ViewerComponent } from '../viewer/viewer.component';
 export class ProviderComponent implements OnInit {
 
   mails: MiniMailComponent[] = new Array
+  filteredMails: MiniMailComponent[] = new Array
   selectedMails: String[] = new Array
   type: String = new String
+  filter: boolean = false
+  sortBy: string = 'date'
   static mailviewer: ViewerComponent
-
 
   constructor(
     private providerService: ProviderService,
@@ -29,10 +31,39 @@ export class ProviderComponent implements OnInit {
         this.providerService.setProviderMails(NavigatorComponent.mails)
         this.setMails()
         this.router.navigateByUrl('/account/' + this.type)
+        this.filter = false
+
+      }
+      )
+    }
+    onFilter(){
+      let value =(<HTMLInputElement>document.getElementById("criteria")).value;
+      let filter =(<HTMLInputElement>document.getElementById("filter")).value;
+      if(value==undefined||filter==undefined){
+        this.filter=false;
+        return;
+      }
+      this.providerService.filter(filter,value).subscribe( x =>{ ////////////////////////////////////////
+        console.log(x)
+        let mails = this.providerService.convert(x as Array<any>)
+        this.filteredMails = this.providerService.setProviderMails(mails)
+        console.log(this.filteredMails)
+        this.filter= !this.filter
       }
       )
     }
 
+    onSort() {
+      let sortBy = (<HTMLInputElement>document.getElementById("filter")).value;
+      // idStr: string, type: string, criteria: String
+      this.providerService.sort(<string>this.type,sortBy).subscribe(data => {
+        // this.sortBy = data;
+        console.log(this.type)
+        console.log("00000000000000000000000")
+        console.log(data)
+      })
+    }
+    
   setMails() {
     this.type = this.providerService.type
     this.mails = this.providerService.miniMails
@@ -53,10 +84,8 @@ export class ProviderComponent implements OnInit {
   //   this.selectedMails = []
   // }
 
-  ngOnInit(): void {
-    
-  }
 
+  ngOnInit(): void {}
 }
 
 

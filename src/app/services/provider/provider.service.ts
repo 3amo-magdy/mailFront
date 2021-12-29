@@ -94,15 +94,21 @@ export class ProviderService {
     return this.http.post(url+NavigatorComponent.userID + "/" + this.type + "/Mdelete", selected, httpOptions);
   }
 
-  sort(by: String) {
-    return this.http.get(url + NavigatorComponent.userID + "/" + this.type + "/sort/" + by);
+  sort(type: string, criteria: string) {
+    console.log(type)
+    return this.http.get(url + NavigatorComponent.userID + "/" + type + "/sort/" + criteria);
     // {idStr}/{group}/sort/{bywhat}
   }
   // search(for: String){
   //   return this.http.get(url + NavigatorComponent.userID + "/" + this.type+"/search/" + by);
   //   //GetMapping("{idStr}/{group}/search/{text}")
   // }
-  filter(criteria: String, value: string, to: String){
+  filter(criteria: String, value: string){
+    let params = new HttpParams().set("value", value);
+    return this.http.get(url + NavigatorComponent.userID + "/" + this.type+ "/filter/" + criteria , {params} );
+    //GetMapping("/{idStr}/{Group}/filter/{criteria}/{to}")
+  }
+  filterTo(criteria: String, value: string, to: String) {
     let params = new HttpParams().set("value", value);
     return this.http.get(url + NavigatorComponent.userID + "/" + this.type+ "/filter/" + criteria + "/" + to, {params} );
     //GetMapping("/{idStr}/{Group}/filter/{criteria}/{to}")
